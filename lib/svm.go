@@ -5,9 +5,7 @@ package cp
 import (
  "github.com/ewalker544/libsvm-go"
  "fmt"
- "log"
  "strconv"
- "math"
 )
 
 
@@ -16,6 +14,7 @@ func PredictFrom(inputfeatures map[int]float64,modelFile string) float64 {
   return model.Predict(inputfeatures) //get class from input
 }
 
+<<<<<<< HEAD
 func Train(inputFilePath string, outputFilePath string)  {
   param := libSvm.NewParameter()      // Create a parameter object with default values
   param.KernelType = libSvm.POLY      // Use the polynomial kernel
@@ -60,5 +59,13 @@ func TrainEntry(class float64, features []uint8,speed float64) string {
     lastid = id
   }
   entry = entry+" "+strconv.Itoa(lastid+2)+":"+fmt.Sprintf("%f",speed)
+=======
+
+func TrainEntry(class float64, features []uint8) string {
+  entry := fmt.Sprintf("%.3f",class)
+  for id,value := range features {
+    entry = entry+" "+strconv.Itoa(id+1)+":"+strconv.Itoa(int(value))
+  }
+>>>>>>> upstream/master
   return entry+"\n"
 }
